@@ -1,0 +1,12 @@
+
+@font-face {
+    font-family: 'my-home';
+    src: url('./iconfont.ttf') format('truetype'),
+        url('./iconfont.woff') format('woff');
+         
+  }
+  .my-home {
+    font-family: 'my-home';
+  }
+  
+  

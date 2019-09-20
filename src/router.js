@@ -1,23 +1,54 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Router from 'vue-router';
+import { Hash } from 'crypto';
 
 Vue.use(Router)
+import Home from './pages/home/Home'
+import Profile from './pages/profile/Profile'
+import Account from './pages/account/Account'
+import Index  from './pages/index/Index'
+import Search from './pages/search/Search'
+import Category from './pages/category/Category'
+import Details from './pages/details/Details'
 
-export default new Router({
-  routes: [
+const router = new Router({
+  mode:'hash',
+  routes:[
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path:'/',
+      redirect:'/index'
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path:'/index',
+      component:Index,
+      redirect:'/index/home',
+      children:[
+        {
+          path:'home',
+          component:Home,
+        },
+        {
+          path:'profile',
+          component:Profile
+        },
+        {
+          path:'account',
+          component:Account
+        }
+      ]
+    },
+    {
+      path:'/search',
+      component:Search
+    },
+    {
+      path:'/category/:id',
+      component:Category
+    },
+    {
+      path:'/details/:id',
+      component:Details
     }
   ]
 })
+export default router
