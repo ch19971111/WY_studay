@@ -50,7 +50,7 @@
                 <i class="my-home">&#xe60f;</i>
                 <span>加入购物车</span>
             </div>
-            <div class="join">
+            <div class="join" @click="$router.push('/index')">
                 <span>加入学习</span>
             </div>
         </footer>
